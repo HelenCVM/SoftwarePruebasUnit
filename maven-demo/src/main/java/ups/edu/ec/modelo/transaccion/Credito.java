@@ -9,10 +9,13 @@ public class Credito {
 	private TablaAmortizacion tablaamort;
 	private String motivo;
 	private Cuota cuotas;
+	private boolean aceptado=true;
+	
 	public Credito() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Credito(String nombreRecomienda, String cedulaRecomienda, String bancoRecomendado, CuentaAhorro cuentaahorro,
 			TablaAmortizacion tablaamort, String motivo, Cuota cuotas) {
 		super();
@@ -66,11 +69,22 @@ public class Credito {
 	public void setCuotas(Cuota cuotas) {
 		this.cuotas = cuotas;
 	}
+	
+	
+	public boolean isAceptado() {
+		return aceptado;
+	}
+
+	public void setAceptado(boolean aceptado) {
+		this.aceptado = aceptado;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Credito [nombreRecomienda=" + nombreRecomienda + ", cedulaRecomienda=" + cedulaRecomienda
 				+ ", bancoRecomendado=" + bancoRecomendado + ", cuentaahorro=" + cuentaahorro + ", tablaamort="
-				+ tablaamort + ", motivo=" + motivo + ", cuotas=" + cuotas + "]";
+				+ tablaamort + ", motivo=" + motivo + ", cuotas=" + cuotas + ", aceptado=" + aceptado + "]";
 	}
 	
 	

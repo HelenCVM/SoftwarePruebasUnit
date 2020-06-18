@@ -12,6 +12,7 @@ import ups.edu.ec.modelo.contabilidad.Ingreso;
 import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
+import ups.edu.ec.modelo.transaccion.Cuota;
 import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
@@ -196,7 +197,22 @@ public class controlador {
 	}
 	
 	//tengo que ver el requerimiento
-	public void solicitarCredito() {
+	public boolean solicitarCredito() {
+		Cuota cuota=new Cuota();
+		cuota.setNumCuota(2);
+		cuota.setMonto(10.50);
+		Credito credito=new Credito();
+		credito.setNombreRecomienda("Luz Maria Velez");
+		credito.setCedulaRecomienda("0131569812");
+		credito.setCuotas(cuota);
+		credito.setAceptado(true);
+		boolean valor=credito.isAceptado();
+		
+		if(valor == true) {
+			return valor;
+		}
+		
+		return valor;
 		
 	}
 	
@@ -216,6 +232,12 @@ public class controlador {
 		return (float)(saldofinal/(interes*tasa));
 	}
 	
+	
+	public ArrayList agregarAdministrador(Administrador ad) {
+		ArrayList list=new ArrayList();
+		list.add(ad);
+		return list;
+	}
 	
 	
 	

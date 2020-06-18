@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
 
 import ups.edu.ec.modelo.contabilidad.Caja;
@@ -119,7 +120,11 @@ public class ControladorTest {
 
 	@Test
 	public void testSolicitarCredito() {
-		fail("Not yet implemented");
+		boolean esperado=true;
+		String esperadoconvertido = String.valueOf(esperado);
+		boolean respuesta=con.solicitarCredito();
+		String respuestaconvertida = String.valueOf(respuesta);
+		assertEquals(esperadoconvertido, respuestaconvertida,0);
 	}
 	
 	@Test
@@ -152,6 +157,20 @@ public class ControladorTest {
 		double total=con.calcularInteres(saldo, interes, tasa);
 		assertEquals(esperado,total,0);
 	}
+	
+	public void testAgregarAdministrador() {
+		Administrador administrador1=new Administrador();
+		administrador1.setCod(1);
+		administrador1.setNombreCompleto("Jose Juan");
+		administrador1.setApellidosCompletos("Hernandez");
+		administrador1.setCorreo("juanjh@gmail.com");
+		administrador1.setContraseña("1234");
+		ArrayList esperado=new ArrayList();
+		esperado.add(administrador1);
+		ArrayList respuesta=con.agregarAdministrador(administrador1);
+		assertEquals(esperado.toString(), respuesta.toString(),0);
+	}
+	
 	/**
 	 * Modulo Contabilidad
 	 */
