@@ -2,9 +2,7 @@ package ups.edu.ec.modelo.usuario;
 
 public class Socio extends Persona{
 
-<<<<<<< HEAD
 
-=======
 	 private int id;
 	 private String lugarTrabajo;
 	 private double montoSalario;
@@ -73,5 +71,5 @@ public class Socio extends Persona{
 	 
 	 
 	 
->>>>>>> branch 'master' of https://github.com/HelenCVM/SoftwarePruebasUnit.git
+
 }

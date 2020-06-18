@@ -110,19 +110,20 @@ public class controlador {
 		return listacaja;	
 	}
 	
-	public double calcularTotal() {
-		double egreso=calcularEgreso();
-		double ingreso=calcularIngreso();
-		return egreso+ingreso;		
-	}
+	//public double calcularTotal() {
+		//double egreso=calcularEgreso();
+		//double ingreso=calcularIngreso();
+		//return egreso+ingreso;		
+	//}
 	
-	public double calcularEgreso() {
+	public double calcularEgreso(double montoInicial,double interesAhorro,double interesesOtraInstitucion) {
 		Egreso egreso= new Egreso();
-		double montoInicial=egreso.getMontoInicial();
-		double interesesAhorro=egreso.getIngreseAhorro();
-		double interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
-		
-		return montoInicial+interesesAhorro+interesesOtraInstitucion;		
+		/*
+		montoInicial=egreso.getMontoInicial();
+		interesAhorro=egreso.getIngreseAhorro();
+		interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
+		*/
+		return montoInicial+interesAhorro+interesesOtraInstitucion;		
 	}
 	
 	public double calcularIngreso() {

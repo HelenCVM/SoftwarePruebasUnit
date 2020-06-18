@@ -1,8 +1,9 @@
-package ups.edu.ec.controlador;
+package ups.edu.ec.main;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ups.edu.ec.controlador.controlador;
 import ups.edu.ec.modelo.contabilidad.HistorialAhorro;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
 
