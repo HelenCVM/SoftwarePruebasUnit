@@ -1,15 +1,11 @@
 package ups.edu.ec.controlador;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-
-import ups.edu.ec.modelo.usuario.Administrador;
-import ups.edu.ec.modelo.usuario.EstadoCuenta;
 
 import ups.edu.ec.modelo.contabilidad.Caja;
 import ups.edu.ec.modelo.contabilidad.CarteraCreditos;
@@ -20,10 +16,12 @@ import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
 import ups.edu.ec.modelo.transaccion.Transaccion;
-
+import ups.edu.ec.modelo.usuario.Administrador;
+import ups.edu.ec.modelo.usuario.EstadoCuenta;
 import ups.edu.ec.modelo.usuario.Socio;
 
-public class ControladorTest {
+public class controladorTest {
+
 	CuentaAhorro cuenta= new CuentaAhorro();
 	controlador con=new controlador();
 	Socio socio=new Socio();
@@ -103,7 +101,9 @@ public class ControladorTest {
 		ArrayList esperado=new ArrayList();
 		esperado.add(socio1);
 		ArrayList respuesta=con.ingresarSocio(socio1);
-		assertEquals(esperado.toString(), respuesta.toString(),0);
+		String esperado1=esperado.toString();
+		String respuesta1=respuesta.toString();
+		assertEquals(esperado1, respuesta1,0);
 	}
 
 	@Test
@@ -245,3 +245,4 @@ public class ControladorTest {
 	}
 
 }
+

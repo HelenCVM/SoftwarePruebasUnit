@@ -149,22 +149,22 @@ public class controlador {
 		return so.toString();
 	}
 	
-	public ArrayList eliminarSocio(Socio so) {
-       ArrayList list1= ingresarSocio(so);
+	public ArrayList<Socio> eliminarSocio(Socio so) {
+       ArrayList<Socio> list1= ingresarSocio(so);
        list1.remove(so);
        return list1;
 	}
 	
-	public ArrayList modificarSocio(Socio so) {
-		ArrayList list1= ingresarSocio(so);
+	public ArrayList<Socio> modificarSocio(Socio so) {
+		ArrayList<Socio> list1= ingresarSocio(so);
 	    Socio socio1=new Socio();
 	    socio1.setId(1);
 	    list1.set(socio1.getId(), so);
 	    return list1;
 	}
 	
-	public ArrayList ingresarSocio(Socio so) {
-		ArrayList list=new ArrayList();
+	public ArrayList<Socio> ingresarSocio(Socio so) {
+		ArrayList<Socio> list=new ArrayList<Socio>();
 		list.add(so);
 		return list;
 		
@@ -179,14 +179,14 @@ public class controlador {
 		socio.setCorreo("juanv@gmail.com");
 		socio.setContraseña("1234");
 		
-		if(correo.equals(so.getCorreo())) {
+		if(correo.equals(socio.getCorreo())) {
 			System.out.print("Correo correcto");
 			validacion=true;
 		}else {
 			System.out.print("Correo incorrecto");
 		}
 		
-		if(contraseña.equals(so.getContraseña())) {
+		if(contraseña.equals(socio.getContraseña())) {
 			System.out.print("Contraseña correcta");
 			validacion=true;
 		}else {
@@ -216,8 +216,8 @@ public class controlador {
 		
 	}
 	
-	public ArrayList agregarEstadoCuenta(EstadoCuenta cuenta) {
-		ArrayList estado=new ArrayList();
+	public ArrayList<EstadoCuenta> agregarEstadoCuenta(EstadoCuenta cuenta) {
+		ArrayList<EstadoCuenta> estado=new ArrayList<EstadoCuenta>();
 		estado.add(cuenta);
 		return estado;
 	}
@@ -233,11 +233,12 @@ public class controlador {
 	}
 	
 	
-	public ArrayList agregarAdministrador(Administrador ad) {
-		ArrayList list=new ArrayList();
-		list.add(ad);
-		return list;
+	public ArrayList<Administrador> agregarAdministrador(Administrador ad) {
+		ArrayList<Administrador> lista=new ArrayList<Administrador>();
+		lista.add(ad);
+		return lista;
 	}
+	
 	
 	
 	
