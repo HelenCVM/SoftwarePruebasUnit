@@ -112,13 +112,14 @@ public class ControladorTest {
 		so.setContraseña("1234");
 		ArrayList esperado1= new ArrayList();
 		ArrayList resultado1=con.eliminarSocio(so);
-		//assertArrayEquals(esperado1, resultado1);
+		
+		assertEquals(esperado1.toString(), resultado1.toString(),0);
 	
 	}
 
 	@Test
 	public void testModificarSocio() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
@@ -143,7 +144,11 @@ public class ControladorTest {
 
 	@Test
 	public void testCalcularSaldo() {
-		fail("Not yet implemented");
+		double esperado=40;
+		double saldo=20;
+		double interes=2;
+		double total=con.calcularSaldo(saldo, interes);
+		assertEquals(esperado,total,0);
 	}
 
 }

@@ -23,6 +23,9 @@ public class controlador {
 	public List<CuentaAhorro> listaCuentaAhorro;
 	public List<Caja>listacaja;
 	public List<LibroDiario>listalibroDiario;
+	Administrador ad=new Administrador();
+	Socio so=new Socio();
+	
 	public controlador() {
 		listaCuentaAhorro= new ArrayList<CuentaAhorro>();
 		listaHistorialAhorro= new ArrayList<HistorialAhorro>();
@@ -138,8 +141,7 @@ public class controlador {
 	
 	
 	//Controlador para modulo Socio
-	Administrador ad=new Administrador();
-	Socio so=new Socio();
+	
 	
 	public String mostrarListaSocio(Socio so) {
 		return so.toString();
