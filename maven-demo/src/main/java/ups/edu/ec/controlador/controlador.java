@@ -155,7 +155,9 @@ public class controlador {
 	
 	public ArrayList modificarSocio(Socio so) {
 		ArrayList list1= ingresarSocio(so);
-	    list1.set(so.getCod(), so);
+	    Socio socio1=new Socio();
+	    socio1.setId(1);
+	    list1.set(socio1.getId(), so);
 	    return list1;
 	}
 	
@@ -168,6 +170,13 @@ public class controlador {
 	
 	public boolean iniciarSesion(String correo,String contraseña) {
 		boolean validacion=false;
+		Socio socio=new Socio();
+		socio.setCod(1);
+		socio.setNombreCompleto("Juan Sebastian");
+		socio.setApellidosCompletos("Vasquez");
+		socio.setCorreo("juanv@gmail.com");
+		socio.setContraseña("1234");
+		
 		if(correo.equals(so.getCorreo())) {
 			System.out.print("Correo correcto");
 			validacion=true;
@@ -201,6 +210,10 @@ public class controlador {
 		return (float)(saldo*interes);
 	}
 	
+	
+	public float calcularInteres(double saldofinal,double interes,double tasa) {
+		return (float)(saldofinal/(interes*tasa));
+	}
 	
 	
 	

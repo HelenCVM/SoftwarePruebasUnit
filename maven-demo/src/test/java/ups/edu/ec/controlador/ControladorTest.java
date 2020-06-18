@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import ups.edu.ec.modelo.usuario.EstadoCuenta;
 import ups.edu.ec.modelo.usuario.Socio;
 
 public class ControladorTest {
@@ -119,17 +120,51 @@ public class ControladorTest {
 
 	@Test
 	public void testModificarSocio() {
+		Socio socio1=new Socio();
+		socio1.setCod(1);
+		socio1.setNombreCompleto("Juan Sebastian");
+		socio1.setApellidosCompletos("Vasquez");
+		socio1.setCorreo("juanv@gmail.com");
+		socio1.setContraseña("1234");
 		
+		Socio so=new Socio();
+		so.setCod(2);
+		so.setNombreCompleto("Juan Sebastian");
+		so.setApellidosCompletos("Vasquez");
+		so.setCorreo("juanv@gmail.com");
+		so.setContraseña("1234");
+		
+		ArrayList esperado1= new ArrayList();
+		esperado1.add(socio1);
+		
+		ArrayList resultado1=con.modificarSocio(so);
+		assertEquals(esperado1.toString(), resultado1.toString(),0);
 	}
 
 	@Test
 	public void testIngresarSocio() {
-		fail("Not yet implemented");
+		Socio socio1=new Socio();
+		socio1.setCod(1);
+		socio1.setNombreCompleto("Juan Sebastian");
+		socio1.setApellidosCompletos("Vasquez");
+		socio1.setCorreo("juanv@gmail.com");
+		socio1.setContraseña("1234");
+		ArrayList esperado=new ArrayList();
+		esperado.add(socio1);
+		ArrayList respuesta=con.ingresarSocio(socio1);
+		assertEquals(esperado.toString(), respuesta.toString(),0);
 	}
 
 	@Test
 	public void testIniciarSesion() {
-		fail("Not yet implemented");
+		String correo="juanv@gmail.com";
+		String contraseña="1234";
+		boolean esperado=true;
+		String esperadoconvertido = String.valueOf(esperado);
+		boolean respuesta=con.iniciarSesion(correo, contraseña);
+		String respuestaconvertida = String.valueOf(respuesta);
+		assertEquals(esperadoconvertido, respuestaconvertida,0);
+		
 	}
 
 	@Test
@@ -139,7 +174,14 @@ public class ControladorTest {
 
 	@Test
 	public void testAgregarEstadoCuenta() {
-		fail("Not yet implemented");
+		EstadoCuenta cuenta=new EstadoCuenta();
+		cuenta.setId("1");
+		cuenta.setSaldo(20.2);
+		cuenta.setInstereses(10.2);
+		ArrayList esperado=new ArrayList();
+		esperado.add(cuenta);
+		ArrayList respuesta=con.agregarEstadoCuenta(cuenta);
+		assertEquals(esperado.toString(), respuesta.toString(),0);
 	}
 
 	@Test
@@ -148,6 +190,16 @@ public class ControladorTest {
 		double saldo=20;
 		double interes=2;
 		double total=con.calcularSaldo(saldo, interes);
+		assertEquals(esperado,total,0);
+	}
+	
+	@Test
+	public void testCalcularInteres() {
+		double esperado=333.333;
+		double saldo=20;
+		double interes=2;
+		double tasa=0.06;
+		double total=con.calcularInteres(saldo, interes, tasa);
 		assertEquals(esperado,total,0);
 	}
 
