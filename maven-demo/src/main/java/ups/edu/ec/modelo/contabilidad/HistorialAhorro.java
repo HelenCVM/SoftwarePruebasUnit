@@ -7,13 +7,13 @@ import ups.edu.ec.modelo.transaccion.CuentaAhorro;
 public class HistorialAhorro {
 
 	private int id;
-	private Date fecha;
+	private String fecha;
 	private CuentaAhorro cuentaahorro;
 	public HistorialAhorro() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public HistorialAhorro(int id, Date fecha, CuentaAhorro cuentaahorro) {
+	public HistorialAhorro(int id, String fecha, CuentaAhorro cuentaahorro) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
@@ -25,11 +25,11 @@ public class HistorialAhorro {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFecha(String string) {
+		this.fecha = string;
 	}
 	public CuentaAhorro getCuentaahorro() {
 		return cuentaahorro;
