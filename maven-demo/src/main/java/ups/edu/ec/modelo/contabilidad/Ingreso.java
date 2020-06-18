@@ -12,7 +12,7 @@ public class Ingreso {
 	private Date fecha;
 	private int interes;
 	private double multa;
-	
+	private double total;
 	
 	
 	
@@ -58,11 +58,20 @@ public class Ingreso {
 	public void setMulta(double multa) {
 		this.multa = multa;
 	}
+	
+	
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
 	@Override
 	public String toString() {
 		return "Ingreso [montoInicial=" + montoInicial + ", transaccion=" + transaccion + ", fecha=" + fecha
-				+ ", interes=" + interes + ", multa=" + multa + "]";
+				+ ", interes=" + interes + ", multa=" + multa + ", total=" + total + "]";
 	}
+	
 	
 	
 	

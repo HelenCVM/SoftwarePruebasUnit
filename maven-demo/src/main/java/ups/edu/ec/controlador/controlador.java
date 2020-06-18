@@ -113,29 +113,30 @@ public class controlador {
 		return listacaja;	
 	}
 	
-	//public double calcularTotal() {
-		//double egreso=calcularEgreso();
-		//double ingreso=calcularIngreso();
-		//return egreso+ingreso;		
-	//}
+	public double calcularTotal(Egreso egreso, Ingreso ingreso) {
+		double egresos=egreso.getTotal();
+		double ingresos=ingreso.getTotal();
+		return egresos+ingresos;		
+	}
 	
-	public double calcularEgreso(double montoInicial,double interesAhorro,double interesesOtraInstitucion) {
-		Egreso egreso= new Egreso();
-		/*
-		montoInicial=egreso.getMontoInicial();
-		interesAhorro=egreso.getIngreseAhorro();
-		interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
-		*/
+	public double calcularEgreso(Egreso egreso) {
+		
+		
+	double	montoInicial=egreso.getMontoInicial();
+	double	interesAhorro=egreso.getIngreseAhorro();
+	double	interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
+		egreso.setTotal(montoInicial+interesAhorro+interesesOtraInstitucion);
 		return montoInicial+interesAhorro+interesesOtraInstitucion;		
 	}
 	
-	public double calcularIngreso() {
-		Ingreso ingreso= new Ingreso();
+	public double calcularIngreso(Ingreso ingreso) {
+		
 		Transaccion transaccion= new Transaccion();
 		double montoinicial=ingreso.getMontoInicial();
 		double valorTransaccion=transaccion.getMonto();
 		double interesMora=ingreso.getInteres();
-		double multas=ingreso.getMulta();		
+		double multas=ingreso.getMulta();
+		ingreso.setTotal(montoinicial+valorTransaccion+interesMora+multas);
 		return montoinicial+valorTransaccion+interesMora+multas;		
 	}
 	
