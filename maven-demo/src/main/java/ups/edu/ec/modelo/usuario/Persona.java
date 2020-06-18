@@ -6,7 +6,8 @@ public abstract class Persona {
 	   private String apellidosCompletos;
 	   private String numeroCedula;
 	   private String direccion;
-	   
+	   private String correo;
+	   private String contraseña;
 	   
 	   
 	
@@ -43,10 +44,26 @@ public abstract class Persona {
 	}
 	
 	
+	
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public String getContraseña() {
+		return contraseña;
+	}
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Persona [cod=" + cod + ", nombreCompleto=" + nombreCompleto + ", apellidosCompletos="
-				+ apellidosCompletos + ", numeroCedula=" + numeroCedula + ", direccion=" + direccion + "]";
+				+ apellidosCompletos + ", numeroCedula=" + numeroCedula + ", direccion=" + direccion + ", correo="
+				+ correo + ", contraseña=" + contraseña + "]";
 	}
 	   
 	   
