@@ -1,8 +1,13 @@
 package ups.edu.ec.controlador;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
+
+import ups.edu.ec.modelo.usuario.Socio;
 
 public class ControladorTest {
 
@@ -75,7 +80,7 @@ public class ControladorTest {
 		double interes=20;
 		double interesOtraInst=30;
 		double total=con.calcularEgreso(montoInicial, interes, interesOtraInst);
-		org.junit.Assert.assertEquals(esperado,total,0);
+		assertEquals(esperado,total,0);
 		
 	}
 
@@ -86,12 +91,29 @@ public class ControladorTest {
 
 	@Test
 	public void testMostrarListaSocio() {
-		fail("Not yet implemented");
+		Socio so=new Socio();
+		so.setCod(1);
+		so.setNombreCompleto("Juan Sebastian");
+		so.setApellidosCompletos("Vasquez");
+		so.setCorreo("juanv@gmail.com");
+		so.setContraseña("1234");
+		String esperado="1,Juan Sebastian,Vasquez,juanv@gmail.com,1234";
+		String resultado=con.mostrarListaSocio(so);
+		assertEquals(esperado,resultado,0);
 	}
 
 	@Test
 	public void testEliminarSocio() {
-		fail("Not yet implemented");
+		Socio so=new Socio();
+		so.setCod(1);
+		so.setNombreCompleto("Juan Sebastian");
+		so.setApellidosCompletos("Vasquez");
+		so.setCorreo("juanv@gmail.com");
+		so.setContraseña("1234");
+		ArrayList esperado1= new ArrayList();
+		ArrayList resultado1=con.eliminarSocio(so);
+		//assertArrayEquals(esperado1, resultado1);
+	
 	}
 
 	@Test

@@ -149,7 +149,6 @@ public class controlador {
        ArrayList list1= ingresarSocio(so);
        list1.remove(so);
        return list1;
-       
 	}
 	
 	public ArrayList modificarSocio(Socio so) {

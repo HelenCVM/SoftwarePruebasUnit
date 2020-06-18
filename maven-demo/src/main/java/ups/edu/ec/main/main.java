@@ -27,7 +27,23 @@ public class main {
 		System.out.println("prueba");
 		con.agregarHistorial(historal);
 		System.out.println("-kskdjnskjdfk");
-		System.out.println(con.listaHistorialAhorro);		
+		System.out.println(con.listaHistorialAhorro);	
+		
+
+		ArrayList array= new ArrayList();
+		System.out.println(array);
+		
+		String ro="[]";
+		System.out.println(ro);
+		
+		ArrayList array1= new ArrayList();
+		System.out.println(array1);
+		
+		if(array.equals(array1)) {
+			System.out.println("ok");
+		}
+		
 		}
 
 }
+
