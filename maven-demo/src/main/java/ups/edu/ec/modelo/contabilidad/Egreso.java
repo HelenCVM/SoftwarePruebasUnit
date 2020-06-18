@@ -7,6 +7,7 @@ public class Egreso {
 	private double montoInicial;
 	private Date fecha;
 	private int ingreseAhorro;
+	private int interesesOtraInstitucion;
 	public Egreso() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -34,6 +35,14 @@ public class Egreso {
 	}
 	public void setIngreseAhorro(int ingreseAhorro) {
 		this.ingreseAhorro = ingreseAhorro;
+	}
+	
+	
+	public int getInteresesOtraInstitucion() {
+		return interesesOtraInstitucion;
+	}
+	public void setInteresesOtraInstitucion(int interesesOtraInstitucion) {
+		this.interesesOtraInstitucion = interesesOtraInstitucion;
 	}
 	@Override
 	public String toString() {

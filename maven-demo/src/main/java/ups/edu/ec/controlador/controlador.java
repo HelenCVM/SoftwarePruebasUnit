@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import ups.edu.ec.modelo.contabilidad.Caja;
 import ups.edu.ec.modelo.contabilidad.CarteraCreditos;
+import ups.edu.ec.modelo.contabilidad.Egreso;
 import ups.edu.ec.modelo.contabilidad.HistorialAhorro;
+import ups.edu.ec.modelo.contabilidad.Ingreso;
+import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
-
-
+import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
 import ups.edu.ec.modelo.usuario.Socio;
@@ -18,9 +21,13 @@ public class controlador {
 	public List<HistorialAhorro> listaHistorialAhorro;
 	public List<CarteraCreditos> listaCarteraCreditos;
 	public List<CuentaAhorro> listaCuentaAhorro;
+	public List<Caja>listacaja;
+	public List<LibroDiario>listalibroDiario;
 	public controlador() {
 		listaCuentaAhorro= new ArrayList<CuentaAhorro>();
 		listaHistorialAhorro= new ArrayList<HistorialAhorro>();
+		listacaja= new ArrayList<Caja>();
+		listalibroDiario= new ArrayList<LibroDiario>();
 	}
 	/**
 	 * Metodos del modulo de contabilidad 
@@ -66,9 +73,68 @@ public class controlador {
 	/**
 	 * Libro  diario
 	 */
+	public List<LibroDiario> agregarCarteraCreditoenLibroDiario(CarteraCreditos cartera){
+		LibroDiario lib =  new LibroDiario();
+		lib.addCarteraCredito(cartera);
+		listalibroDiario.add(lib);
+		return listarLibroDiario();
+		
+	}
+	public List<LibroDiario> agregarHistorialCreditoenLibroDiario(HistorialAhorro hisAhorro){
+		LibroDiario lib =  new LibroDiario();
+		lib.addHistorialCredito(hisAhorro);
+		listalibroDiario.add(lib);
+		return listalibroDiario;
+		
+	}
+	public List<LibroDiario> listarLibroDiario() {		
+		for (int i = 0; i < listalibroDiario.size(); i++) {
+			System.out.println(listalibroDiario);
+		}
+		return listalibroDiario;	
+	}
 	
+	/**
+	 * Caja
+	 */
 	
-
+	public List<Caja >agregarCaja(Caja caja) {
+		listacaja.add(caja);
+			return listacaja;
+			
+	}
+	public List<Caja> listarCaja() {		
+		for (int i = 0; i < listacaja.size(); i++) {
+			System.out.println(listacaja);
+		}
+		return listacaja;	
+	}
+	
+	public double calcularTotal() {
+		double egreso=calcularEgreso();
+		double ingreso=calcularIngreso();
+		return egreso+ingreso;		
+	}
+	
+	public double calcularEgreso() {
+		Egreso egreso= new Egreso();
+		double montoInicial=egreso.getMontoInicial();
+		double interesesAhorro=egreso.getIngreseAhorro();
+		double interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
+		
+		return montoInicial+interesesAhorro+interesesOtraInstitucion;		
+	}
+	
+	public double calcularIngreso() {
+		Ingreso ingreso= new Ingreso();
+		Transaccion transaccion= new Transaccion();
+		double montoinicial=ingreso.getMontoInicial();
+		double valorTransaccion=transaccion.getMonto();
+		double interesMora=ingreso.getInteres();
+		double multas=ingreso.getMulta();		
+		return montoinicial+valorTransaccion+interesMora+multas;		
+	}
+	
 	
 	//Controlador para modulo Socio
 	Administrador ad=new Administrador();
