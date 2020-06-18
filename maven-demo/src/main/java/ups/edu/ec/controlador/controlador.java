@@ -13,6 +13,7 @@ import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
 import ups.edu.ec.modelo.transaccion.Cuota;
+import ups.edu.ec.modelo.transaccion.TablaAmortizacion;
 import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
@@ -240,6 +241,79 @@ public class controlador {
 	}
 	
 	
+	/*
+	 * 
+	 * Modulo transacciones
+	 */
+	public float generarSaldo(double saldoinicial,double saldofinal) {
+		
+		return (float) (saldofinal+saldoinicial);
+	}
+	
+	
+	public float generarInteres(double saldo,double interes) {
+		return (float)(saldo*interes);
+	}
+	
+	public ArrayList<Transaccion> agregarTransacciones(Transaccion tra) {
+		ArrayList<Transaccion> lista=new ArrayList<Transaccion>();
+		lista.add(tra);
+		return lista;
+	}
+	
+	public String generarNumeroCuenta(CuentaAhorro numero) {
+		return "NDC" + numero;
+	}
+	
+	public boolean ingresarRetiro(double monto) {
+		Transaccion tra=new Transaccion();
+		tra.setMonto(20.2);
+		double saldo=tra.getMonto();
+		
+		boolean valor;
+		if(monto < saldo) {
+			valor=true;
+		}
+		else {
+			valor=false;
+			
+		}
+		
+		return valor;
+	}
+	
+	
+	public double ingresarDeposito(Transaccion tra) {
+		return tra.getMonto();
+	}
+	
+	
+	public ArrayList<Credito> agregarCuenta(Credito credito) {
+		ArrayList<Credito> lista=new ArrayList<Credito>();
+		lista.add(credito);
+		return lista;
+	}
+	
+	
+	public ArrayList<TablaAmortizacion> tablaAmortizacion(TablaAmortizacion tabla) {
+		ArrayList<TablaAmortizacion> lista=new ArrayList<TablaAmortizacion>();
+		lista.add(tabla);
+		return lista;
+	}
+	
+	public float calcularCuota(double montocredito,double tasainteres,int cantidadmeses) {
+		float totalparcial=(float)(montocredito*tasainteres);
+		return (float)(totalparcial/cantidadmeses);	
+	}
+	
+	public float calcularInteres(double tasaInteres,int meses) {
+		return (float)(tasaInteres*meses);
+		
+	}
+	
+	public String generarNumeroCuota(Cuota numero) {
+		return "NDCuota" + numero;
+	}
 	
 	
 }

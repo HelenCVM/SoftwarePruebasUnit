@@ -243,6 +243,12 @@ public class controladorTest {
 		double total=con.calcularIngreso(ingreso);
 		assertEquals(esperado,total,0);
 	}
+	
+	
+	/*
+	 * 
+	 * Modulo Transacciones
+	 */
 
 }
 
