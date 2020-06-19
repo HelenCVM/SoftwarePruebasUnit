@@ -288,7 +288,6 @@ public class controladorTest extends TestCase {
 	public void testTablaAmortizacion() {
 		fail("Not yet implemented");
 	}
-
 	@Test
 	public void testCalcularCuota() {
 		float esperado=350;
