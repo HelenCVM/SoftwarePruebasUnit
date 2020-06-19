@@ -137,17 +137,17 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularSaldo() {
-		double esperado = 40;
-		double saldo = 20;
-		double interes = 2;
-		double total = con.calcularSaldo(saldo, interes);
+		float esperado = 40;
+		float saldo = 20;
+		float interes = 2;
+		float total = con.calcularSaldo(saldo, interes);
 		assertEquals(esperado, total, 0);
 	}
 
 	@Test
 	public void testCalcularInteres() {
-		double esperado = 333.333;
-		double saldo = 20;
+		double esperado = 5;
+		double saldo = 60;
 		double interes = 2;
 		double tasa = 6;
 		double total = con.calcularInteres(saldo, interes, tasa);
@@ -222,7 +222,11 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularEgreso() {
-		double esperado = 150;
+		Egreso egreso=new Egreso();
+		egreso.setMontoInicial(20.2);
+		egreso.setIngreseAhorro(200);
+		egreso.setInteresesOtraInstitucion(20);
+		double esperado = 240.2;
 		double total = con.calcularEgreso(egreso);
 		assertEquals(esperado, total, 0);
 
@@ -231,7 +235,7 @@ public class controladorTest extends TestCase {
 	@Test
 	public void testCalcularIngreso() {
 		double esperado = 180;
-		double total = con.calcularIngreso(ingreso);
+		double total = con.calcularIngreso(ingreso,transaccion);
 		assertEquals(esperado, total, 0);
 	}
 
@@ -254,15 +258,17 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testIngresarRetiro() {
-		
-		
 		boolean respuesta=con.ingresarRetiro(10);
 		assertTrue(respuesta);
 	}
 
 	@Test
 	public void testIngresarDeposito() {
-		
+		Transaccion tra=new Transaccion();
+		double montovalor=30.2;
+	    tra.setMonto(20);
+	    double resultado=con.ingresarDeposito(tra);
+	    assertEquals(montovalor, resultado, 0);
 	}
 
 	@Test
