@@ -43,7 +43,6 @@ public class controladorTest extends TestCase {
 	 */
 	@Test
 	public void testMostrarListaSocio() {
-
 		socio.setCod(1);
 		socio.setNombreCompleto("Juan Sebastian");
 		socio.setApellidosCompletos("Vasquez");
