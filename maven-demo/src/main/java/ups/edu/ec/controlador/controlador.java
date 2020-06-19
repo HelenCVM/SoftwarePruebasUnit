@@ -296,7 +296,7 @@ public class controlador {
 	}
 	
 	
-	public ArrayList<Credito> agregarCuenta(Credito credito) {
+	public ArrayList<Credito> agregCuenta(Credito credito) {
 		ArrayList<Credito> lista=new ArrayList<Credito>();
 		lista.add(credito);
 		return lista;

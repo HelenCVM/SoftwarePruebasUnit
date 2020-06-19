@@ -18,6 +18,7 @@ import ups.edu.ec.modelo.contabilidad.Ingreso;
 import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
+import ups.edu.ec.modelo.transaccion.TablaAmortizacion;
 import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
@@ -49,7 +50,7 @@ public class controladorTest extends TestCase {
 		socio.setApellidosCompletos("Vasquez");
 		socio.setCorreo("juanv@gmail.com");
 		socio.setContraseña("1234");
-		String esperado = "1,Juan Sebastian,Vasquez,juanv@gmail.com,1234";
+		String esperado = socio.toString();
 		String resultado = con.mostrarListaSocio(socio);
 		assertEquals(esperado, resultado, 0);
 	}
@@ -271,7 +272,7 @@ public class controladorTest extends TestCase {
 	@Test
 	public void testIngresarDeposito() {
 		Transaccion tra=new Transaccion();
-		double montovalor=30.2;
+		double montovalor=20;
 	    tra.setMonto(20);
 	    double resultado=con.ingresarDeposito(tra);
 	    assertEquals(montovalor, resultado, 0);
@@ -280,10 +281,9 @@ public class controladorTest extends TestCase {
 	@Test
 	public void testAgregarCuenta() {
 		Socio socio1 = new Socio();
-		
 		ArrayList esperado = new ArrayList();
 		esperado.add(credito);
-		ArrayList respuesta = con.agregarCuenta(credito);
+		ArrayList respuesta = con.agregCuenta(credito);
 		String esperado1 = esperado.toString();
 		String respuesta1 = respuesta.toString();
 		assertEquals(esperado1, respuesta1, 0);
@@ -291,7 +291,16 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testTablaAmortizacion() {
-		fail("Not yet implemented");
+		TablaAmortizacion tabla=new TablaAmortizacion();
+		tabla.setMontoCredito(20.2);
+		tabla.setPagoMensual(10.2);
+		tabla.setTablaInteres(15);
+		ArrayList esperado = new ArrayList();
+		esperado.add(tabla);
+		ArrayList respuesta = con.tablaAmortizacion(tabla);
+		assertNull(respuesta);
+		
+		
 	}
 
 	@Test
