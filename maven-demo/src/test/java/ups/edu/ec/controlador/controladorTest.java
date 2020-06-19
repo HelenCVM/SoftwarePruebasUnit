@@ -111,21 +111,15 @@ public class controladorTest extends TestCase {
 	public void testIniciarSesion() {
 		String correo = "juanv@gmail.com";
 		String contraseña = "1234";
-		boolean esperado = true;
-		String esperadoconvertido = String.valueOf(esperado);
 		boolean respuesta = con.iniciarSesion(correo, contraseña);
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		assertTrue(respuesta);
 
 	}
 
 	@Test
 	public void testSolicitarCredito() {
-		boolean esperado = true;
-		String esperadoconvertido = String.valueOf(esperado);
 		boolean respuesta = con.solicitarCredito();
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		assertTrue(respuesta);
 	}
 
 	@Test
@@ -142,19 +136,19 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularSaldo() {
-		double esperado = 40;
-		double saldo = 20;
-		double interes = 2;
-		double total = con.calcularSaldo(saldo, interes);
+		float esperado = 40;
+		float saldo = 20;
+		float interes = 2;
+		float total = con.calcularSaldo(saldo, interes);
 		assertEquals(esperado, total, 0);
 	}
 
 	@Test
 	public void testCalcularInteres() {
-		double esperado = 333.333;
-		double saldo = 20;
+		double esperado = 5;
+		double saldo = 60;
 		double interes = 2;
-		double tasa = 0.06;
+		double tasa = 6;
 		double total = con.calcularInteres(saldo, interes, tasa);
 		assertEquals(esperado, total, 0);
 	}
@@ -227,7 +221,11 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularEgreso() {
-		double esperado = 150;
+		Egreso egreso=new Egreso();
+		egreso.setMontoInicial(20.2);
+		egreso.setIngreseAhorro(200);
+		egreso.setInteresesOtraInstitucion(20);
+		double esperado = 240.2;
 		double total = con.calcularEgreso(egreso);
 		assertEquals(esperado, total, 0);
 
@@ -235,8 +233,14 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularIngreso() {
-		double esperado = 180;
-		double total = con.calcularIngreso(ingreso);
+		Ingreso ingreso=new Ingreso();
+		Transaccion transaccion=new Transaccion();
+		ingreso.setMontoInicial(10);
+		transaccion.setMonto(56);
+		ingreso.setInteres(10);
+		ingreso.setMulta(30);
+		double esperado = 106;
+		double total = con.calcularIngreso(ingreso,transaccion);
 		assertEquals(esperado, total, 0);
 	}
 
@@ -259,17 +263,17 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testIngresarRetiro() {
-		
-		boolean esperado=true;
-		String esperadoconvertido = String.valueOf(esperado);
-		String respuesta=String.valueOf(con.ingresarRetiro(100));
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		boolean respuesta=con.ingresarRetiro(10);
+		assertTrue(respuesta);
 	}
 
 	@Test
 	public void testIngresarDeposito() {
-		
+		Transaccion tra=new Transaccion();
+		double montovalor=30.2;
+	    tra.setMonto(20);
+	    double resultado=con.ingresarDeposito(tra);
+	    assertEquals(montovalor, resultado, 0);
 	}
 
 	@Test

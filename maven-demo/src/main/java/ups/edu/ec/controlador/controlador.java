@@ -122,8 +122,6 @@ public class controlador {
 	}
 	
 	public double calcularEgreso(Egreso egreso) {
-		
-		
 	double	montoInicial=egreso.getMontoInicial();
 	double	interesAhorro=egreso.getIngreseAhorro();
 	double	interesesOtraInstitucion= egreso.getInteresesOtraInstitucion();
@@ -131,9 +129,9 @@ public class controlador {
 		return montoInicial+interesAhorro+interesesOtraInstitucion;		
 	}
 	
-	public double calcularIngreso(Ingreso ingreso) {
+	public double calcularIngreso(Ingreso ingreso,Transaccion transaccion) {
 		
-		Transaccion transaccion= new Transaccion();
+		//Transaccion transaccion= new Transaccion();
 		double montoinicial=ingreso.getMontoInicial();
 		double valorTransaccion=transaccion.getMonto();
 		double interesMora=ingreso.getInteres();
@@ -225,12 +223,15 @@ public class controlador {
 	
 	
 	public float calcularSaldo(double saldo,double interes) {
-		return (float)(saldo*interes);
+		float resultadofinal=(float) (saldo*interes);
+		return (float) resultadofinal;
 	}
 	
 	
 	public float calcularInteres(double saldofinal,double interes,double tasa) {
-		return (float)(saldofinal/(interes*tasa));
+		float resultadoparcial=(float) (interes*tasa);
+		float resultadofinal=(float) (saldofinal/resultadoparcial);
+		return (float) resultadofinal;
 	}
 	
 	
@@ -248,13 +249,14 @@ public class controlador {
 	 * @return
 	 */
 	public float generarSaldo(double saldoinicial,double saldofinal) {
-		
-		return (float) (saldofinal+saldoinicial);
+		float resultadofinal=(float) (saldofinal+saldoinicial);
+		return (float) resultadofinal;
 	}
 	
 	
 	public float generarInteres(double saldo,double interes) {
-		return (float)(saldo*interes);
+		float resultadofinal=(float) (saldo*interes);
+		return (float) resultadofinal;
 	}
 	/**
 	 * Transaccion
