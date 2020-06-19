@@ -112,21 +112,15 @@ public class controladorTest extends TestCase {
 	public void testIniciarSesion() {
 		String correo = "juanv@gmail.com";
 		String contraseña = "1234";
-		boolean esperado = true;
-		String esperadoconvertido = String.valueOf(esperado);
 		boolean respuesta = con.iniciarSesion(correo, contraseña);
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		assertTrue(respuesta);
 
 	}
 
 	@Test
 	public void testSolicitarCredito() {
-		boolean esperado = true;
-		String esperadoconvertido = String.valueOf(esperado);
 		boolean respuesta = con.solicitarCredito();
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		assertTrue(respuesta);
 	}
 
 	@Test
@@ -261,11 +255,9 @@ public class controladorTest extends TestCase {
 	@Test
 	public void testIngresarRetiro() {
 		
-		boolean esperado=true;
-		String esperadoconvertido = String.valueOf(esperado);
-		String respuesta=String.valueOf(con.ingresarRetiro(100));
-		String respuestaconvertida = String.valueOf(respuesta);
-		assertEquals(esperadoconvertido, respuestaconvertida, 0);
+		
+		boolean respuesta=con.ingresarRetiro(100);
+		assertTrue(respuesta);
 	}
 
 	@Test
