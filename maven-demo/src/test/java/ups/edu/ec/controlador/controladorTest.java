@@ -194,9 +194,12 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testAgregarCarteraCreditoenLibroDiario() {
+		credito.setCedulaRecomienda("0151489812");
+		carteraCredito.setId(1);
+		carteraCredito.setCredito(credito);
 		libroDiario.addCarteraCredito(carteraCredito);
-		con.agregarCarteraCredito(carteraCredito);
-
+		List respuesta=con.agregarCarteraCredito(carteraCredito);
+        assertNull(respuesta);
 	}
 
 	@Test
@@ -216,7 +219,9 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularTotal() {
-		double numero = 10;
+		double numero = 600.50;
+		egreso.setTotal(400.50);
+		ingreso.setTotal(200);
 		double total = con.calcularTotal(egreso, ingreso);
 		assertEquals(numero, total, 0);
 	}
