@@ -234,7 +234,13 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularIngreso() {
-		double esperado = 180;
+		Ingreso ingreso=new Ingreso();
+		Transaccion transaccion=new Transaccion();
+		ingreso.setMontoInicial(10);
+		transaccion.setMonto(56);
+		ingreso.setInteres(10);
+		ingreso.setMulta(30);
+		double esperado = 106;
 		double total = con.calcularIngreso(ingreso,transaccion);
 		assertEquals(esperado, total, 0);
 	}
