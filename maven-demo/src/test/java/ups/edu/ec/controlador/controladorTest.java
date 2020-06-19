@@ -149,7 +149,7 @@ public class controladorTest extends TestCase {
 		double esperado = 333.333;
 		double saldo = 20;
 		double interes = 2;
-		double tasa = 0.06;
+		double tasa = 6;
 		double total = con.calcularInteres(saldo, interes, tasa);
 		assertEquals(esperado, total, 0);
 	}
@@ -256,7 +256,7 @@ public class controladorTest extends TestCase {
 	public void testIngresarRetiro() {
 		
 		
-		boolean respuesta=con.ingresarRetiro(100);
+		boolean respuesta=con.ingresarRetiro(10);
 		assertTrue(respuesta);
 	}
 

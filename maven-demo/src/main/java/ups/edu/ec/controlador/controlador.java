@@ -248,13 +248,14 @@ public class controlador {
 	 * @return
 	 */
 	public float generarSaldo(double saldoinicial,double saldofinal) {
-		
-		return (float) (saldofinal+saldoinicial);
+		float resultadofinal=(float) (saldofinal+saldoinicial);
+		return (float) resultadofinal;
 	}
 	
 	
 	public float generarInteres(double saldo,double interes) {
-		return (float)(saldo*interes);
+		float resultadofinal=(float) (saldo*interes);
+		return (float) resultadofinal;
 	}
 	/**
 	 * Transaccion
