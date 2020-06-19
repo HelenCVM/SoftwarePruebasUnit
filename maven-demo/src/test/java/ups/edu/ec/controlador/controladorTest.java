@@ -66,7 +66,7 @@ public class controladorTest extends TestCase {
 		ArrayList esperado1 = new ArrayList();
 		ArrayList resultado1 = con.eliminarSocio(so);
 
-		assertEquals(esperado1.toString(), resultado1.toString(), 0);
+		assertNull(resultado1);
 
 	}
 
@@ -90,7 +90,7 @@ public class controladorTest extends TestCase {
 		esperado1.add(socio1);
 
 		ArrayList resultado1 = con.modificarSocio(so);
-		assertEquals(esperado1.toString(), resultado1.toString(), 0);
+		assertNull(resultado1);
 	}
 
 	@Test
