@@ -2,11 +2,14 @@ package ups.edu.ec.controlador;
 
 import static org.junit.Assert.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 
+import junit.framework.TestCase;
 import ups.edu.ec.modelo.contabilidad.Caja;
 import ups.edu.ec.modelo.contabilidad.CarteraCreditos;
 import ups.edu.ec.modelo.contabilidad.Egreso;
@@ -20,7 +23,7 @@ import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
 import ups.edu.ec.modelo.usuario.Socio;
 
-public class controladorTest {
+public class controladorTest extends TestCase {
 	CuentaAhorro cuenta = new CuentaAhorro();
 	controlador con = new controlador();
 	Socio socio = new Socio();
@@ -240,27 +243,46 @@ public class controladorTest {
 
 	@Test
 	public void testAgregarTransacciones() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGenerarNumeroCuenta() {
-		fail("Not yet implemented");
+		Transaccion transaccion = new Transaccion();
+		transaccion.setCiudad("Quito");
+		Date fecha2 = new Date(116, 5,3);
+		transaccion.setFecha(fecha2);
+		transaccion.setId(1);
+		transaccion.setMonto(100);
+		transaccion.setTipoTransaccion("deposito");
+		ArrayList esperado = new ArrayList();
+		esperado.add(transaccion);
+		ArrayList respuesta = con.agregarTransacciones(transaccion);
+		String esperado1 = esperado.toString();
+		String respuesta1 = respuesta.toString();
+		assertEquals(esperado1, respuesta1, 0);
 	}
 
 	@Test
 	public void testIngresarRetiro() {
-		fail("Not yet implemented");
+		
+		boolean esperado=true;
+		String esperadoconvertido = String.valueOf(esperado);
+		String respuesta=String.valueOf(con.ingresarRetiro(100));
+		String respuestaconvertida = String.valueOf(respuesta);
+		assertEquals(esperadoconvertido, respuestaconvertida, 0);
 	}
 
 	@Test
 	public void testIngresarDeposito() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testAgregarCuenta() {
-		fail("Not yet implemented");
+		Socio socio1 = new Socio();
+		
+		ArrayList esperado = new ArrayList();
+		esperado.add(credito);
+		ArrayList respuesta = con.agregarCuenta(credito);
+		String esperado1 = esperado.toString();
+		String respuesta1 = respuesta.toString();
+		assertEquals(esperado1, respuesta1, 0);
 	}
 
 	@Test
@@ -270,17 +292,9 @@ public class controladorTest {
 
 	@Test
 	public void testCalcularCuota() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCalcularInteresDoubleInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGenerarNumeroCuota() {
-		fail("Not yet implemented");
+		float esperado=350;
+		float respuesta=con.calcularCuota(2000,5, 6);
+		assertEquals(esperado, respuesta, 0);
 	}
 
 }

@@ -242,7 +242,7 @@ public class controlador {
 	
 	
 	/**
-	 * Modulo  transaccion
+	 * 
 	 * @param saldoinicial
 	 * @param saldofinal
 	 * @return
@@ -256,7 +256,11 @@ public class controlador {
 	public float generarInteres(double saldo,double interes) {
 		return (float)(saldo*interes);
 	}
-	
+	/**
+	 * Transaccion
+	 * @param tra
+	 * @return
+	 */
 	public ArrayList<Transaccion> agregarTransacciones(Transaccion tra) {
 		ArrayList<Transaccion> lista=new ArrayList<Transaccion>();
 		lista.add(tra);
@@ -304,17 +308,9 @@ public class controlador {
 	}
 	
 	public float calcularCuota(double montocredito,double tasainteres,int cantidadmeses) {
-		float totalparcial=(float)(montocredito*tasainteres);
+		double interes=(montocredito*tasainteres)/100;
+		float totalparcial=(float)(montocredito+interes);
 		return (float)(totalparcial/cantidadmeses);	
-	}
-	
-	public float calcularInteres(double tasaInteres,int meses) {
-		return (float)(tasaInteres*meses);
-		
-	}
-	
-	public String generarNumeroCuota(Cuota numero) {
-		return "NDCuota" + numero;
 	}
 	
 	
