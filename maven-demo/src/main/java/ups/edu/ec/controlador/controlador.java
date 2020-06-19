@@ -241,9 +241,11 @@ public class controlador {
 	}
 	
 	
-	/*
-	 * 
-	 * Modulo transacciones
+	/**
+	 * Modulo  transaccion
+	 * @param saldoinicial
+	 * @param saldofinal
+	 * @return
 	 */
 	public float generarSaldo(double saldoinicial,double saldofinal) {
 		
