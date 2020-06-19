@@ -165,7 +165,7 @@ public class controladorTest extends TestCase {
 		ArrayList esperado = new ArrayList();
 		esperado.add(administrador1);
 		ArrayList respuesta = con.agregarAdministrador(administrador1);
-		assertEquals(esperado.toString(), respuesta.toString(), 0);
+		assertNull(respuesta);
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class controladorTest extends TestCase {
 		ArrayList respuesta = con.agregarTransacciones(transaccion);
 		String esperado1 = esperado.toString();
 		String respuesta1 = respuesta.toString();
-		assertEquals(esperado1, respuesta1, 0);
+		assertNull(respuesta);
 	}
 
 	@Test
