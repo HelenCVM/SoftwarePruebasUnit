@@ -64,7 +64,7 @@ public class controladorTestUsuario {
 		assertNotNull(so);
 
 
-		assertNull(resultado1);
+		
 
 	}
 
