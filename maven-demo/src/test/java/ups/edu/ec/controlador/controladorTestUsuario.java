@@ -87,8 +87,7 @@ public class controladorTestUsuario {
 
 		assertNotNull(resultado1);
 
-		assertNull(resultado1);
-	}
+		}
 
 	@Test
 	public void testIngresarSocio() {
@@ -151,8 +150,6 @@ public class controladorTestUsuario {
 		administrador1.setApellidosCompletos("Hernandez");
 		administrador1.setCorreo("juanjh@gmail.com");
 		administrador1.setContraseña("1234");
-		ArrayList esperado = new ArrayList();
-		esperado.add(administrador1);
 		ArrayList respuesta = con.agregarAdministrador(administrador1);
 		assertNull(respuesta);
 	}
