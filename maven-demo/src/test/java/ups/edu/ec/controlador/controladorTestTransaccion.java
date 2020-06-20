@@ -99,20 +99,6 @@ public class controladorTestTransaccion {
 	}
 
 
-	@Test
-	public void testGenerarNumeroCuenta() {
-		fail("Not yet implemented");
-	}
-
-	
-
-
-
-	@Test
-	public void testAgregCuenta() {
-		fail("Not yet implemented");
-	}
-
 
 	
 }
