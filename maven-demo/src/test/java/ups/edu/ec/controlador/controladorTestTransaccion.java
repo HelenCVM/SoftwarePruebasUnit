@@ -1,12 +1,16 @@
 package ups.edu.ec.controlador;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import ups.edu.ec.modelo.contabilidad.Caja;
 import ups.edu.ec.modelo.contabilidad.CarteraCreditos;
@@ -20,7 +24,7 @@ import ups.edu.ec.modelo.transaccion.TablaAmortizacion;
 import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Socio;
 
-class controladorTestTransaccion {
+public class controladorTestTransaccion {
 	CuentaAhorro cuenta = new CuentaAhorro();
 	controladorTransaccion con = new controladorTransaccion();
 	Socio socio = new Socio();
@@ -95,4 +99,20 @@ class controladorTestTransaccion {
 	}
 
 
+	@Test
+	public void testGenerarNumeroCuenta() {
+		fail("Not yet implemented");
+	}
+
+	
+
+
+
+	@Test
+	public void testAgregCuenta() {
+		fail("Not yet implemented");
+	}
+
+
+	
 }
