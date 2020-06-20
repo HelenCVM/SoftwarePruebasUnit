@@ -18,6 +18,7 @@ import ups.edu.ec.modelo.contabilidad.Ingreso;
 import ups.edu.ec.modelo.contabilidad.LibroDiario;
 import ups.edu.ec.modelo.transaccion.Credito;
 import ups.edu.ec.modelo.transaccion.CuentaAhorro;
+import ups.edu.ec.modelo.transaccion.TablaAmortizacion;
 import ups.edu.ec.modelo.transaccion.Transaccion;
 import ups.edu.ec.modelo.usuario.Administrador;
 import ups.edu.ec.modelo.usuario.EstadoCuenta;
@@ -38,120 +39,7 @@ public class controladorTest extends TestCase {
 	List<Egreso> listaegreso = new ArrayList<Egreso>();
 	List<Ingreso> listaingreso = new ArrayList<Ingreso>();
 
-	/**
-	 * Modulo Socio
-	 */
-	@Test
-	public void testMostrarListaSocio() {
-		socio.setCod(1);
-		socio.setNombreCompleto("Juan Sebastian");
-		socio.setApellidosCompletos("Vasquez");
-		socio.setCorreo("juanv@gmail.com");
-		socio.setContraseña("1234");
-		String esperado = "1,Juan Sebastian,Vasquez,juanv@gmail.com,1234";
-		String resultado = con.mostrarListaSocio(socio);
-		assertNotNull(socio);
-	}
-
-	@Test
-	public void testEliminarSocio() {
-		Socio so = new Socio();
-		so.setCod(1);
-		so.setNombreCompleto("Juan Sebastian");
-		so.setApellidosCompletos("Vasquez");
-		so.setCorreo("juanv@gmail.com");
-		so.setContraseña("1234");
-		ArrayList esperado1 = new ArrayList();
-		ArrayList resultado1 = con.eliminarSocio(so);
-		assertNotNull(so);
-
-	}
-
-	@Test
-	public void testModificarSocio() {
-		Socio socio1 = new Socio();
-		socio1.setCod(1);
-		socio1.setNombreCompleto("Juan Sebastian");
-		socio1.setApellidosCompletos("Vasquez");
-		socio1.setCorreo("juanv@gmail.com");
-		socio1.setContraseña("1234");
-
-		Socio so = new Socio();
-		so.setCod(2);
-		so.setNombreCompleto("Juan Sebastian");
-		so.setApellidosCompletos("Vasquez");
-		so.setCorreo("juanv@gmail.com");
-		so.setContraseña("1234");
-		ArrayList resultado1 = con.modificarSocio(so);
-		assertNotNull(resultado1);
-	}
-
-	@Test
-	public void testIngresarSocio() {
-		Socio socio1 = new Socio();
-		socio1.setCod(1);
-		socio1.setNombreCompleto("Juan Sebastian");
-		socio1.setApellidosCompletos("Vasquez");
-		socio1.setCorreo("juanv@gmail.com");
-		socio1.setContraseña("1234");	
-		ArrayList respuesta = con.ingresarSocio(socio1);
-	assertNotNull(respuesta);
-	}
-
-	@Test
-	public void testIniciarSesion() {
-		String correo = "juanv@gmail.com";
-		String contraseña = "1234";
-		boolean respuesta = con.iniciarSesion(correo, contraseña);
-		assertTrue(respuesta);
-	}
-	@Test
-	public void testSolicitarCredito() {
-		boolean respuesta = con.solicitarCredito();
-		assertTrue(respuesta);
-	}
-
-	@Test
-	public void testAgregarEstadoCuenta() {
-		EstadoCuenta cuenta = new EstadoCuenta();
-		cuenta.setId("1");
-		cuenta.setSaldo(20.2);
-		cuenta.setInstereses(10.2);
-		ArrayList respuesta = con.agregarEstadoCuenta(cuenta);
-		assertNotNull(respuesta);
-	}
-
-	@Test
-	public void testCalcularSaldo() {
-		float esperado = 40;
-		float saldo = 20;
-		float interes = 2;
-		float total = con.calcularSaldo(saldo, interes);
-		assertEquals(esperado, total, 0);
-	}
-
-	@Test
-	public void testCalcularInteres() {
-		double esperado = 5;
-		double saldo = 60;
-		double interes = 2;
-		double tasa = 6;
-		double total = con.calcularInteres(saldo, interes, tasa);
-		assertEquals(esperado, total, 0);
-	}
-
-	public void testAgregarAdministrador() {
-		Administrador administrador1 = new Administrador();
-		administrador1.setCod(1);
-		administrador1.setNombreCompleto("Jose Juan");
-		administrador1.setApellidosCompletos("Hernandez");
-		administrador1.setCorreo("juanjh@gmail.com");
-		administrador1.setContraseña("1234");
-		ArrayList esperado = new ArrayList();
-		esperado.add(administrador1);
-		ArrayList respuesta = con.agregarAdministrador(administrador1);
-		assertEquals(esperado.toString(), respuesta.toString(), 0);
-	}
+	
 
 	/**
 	 * Modulo Contabilidad
@@ -175,13 +63,17 @@ public class controladorTest extends TestCase {
 		carteraCredito.setCredito(credito);
 		carteraCredito.setId(1);
 		con.agregarCarteraCredito(carteraCredito);
+		assertNotNull(carteraCredito);
 	}
 
 	@Test
 	public void testAgregarCarteraCreditoenLibroDiario() {
+		credito.setCedulaRecomienda("0151489812");
+		carteraCredito.setId(1);
+		carteraCredito.setCredito(credito);
 		libroDiario.addCarteraCredito(carteraCredito);
-		con.agregarCarteraCredito(carteraCredito);
-
+		List respuesta=con.agregarCarteraCredito(carteraCredito);
+        assertNull(respuesta);
 	}
 
 	@Test
@@ -201,7 +93,9 @@ public class controladorTest extends TestCase {
 
 	@Test
 	public void testCalcularTotal() {
-		double numero = 10;
+		double numero = 600.50;
+		egreso.setTotal(400.50);
+		ingreso.setTotal(200);
 		double total = con.calcularTotal(egreso, ingreso);
 		assertEquals(numero, total, 0);
 	}
@@ -229,61 +123,6 @@ public class controladorTest extends TestCase {
 		double esperado = 106;
 		double total = con.calcularIngreso(ingreso,transaccion);
 		assertEquals(esperado, total, 0);
-	}
-
-	@Test
-	public void testAgregarTransacciones() {
-		Transaccion transaccion = new Transaccion();
-		transaccion.setCiudad("Quito");
-		Date fecha2 = new Date(116, 5,3);
-		transaccion.setFecha(fecha2);
-		transaccion.setId(1);
-		transaccion.setMonto(100);
-		transaccion.setTipoTransaccion("deposito");
-		ArrayList esperado = new ArrayList();
-		esperado.add(transaccion);
-		ArrayList respuesta = con.agregarTransacciones(transaccion);
-		String esperado1 = esperado.toString();
-		String respuesta1 = respuesta.toString();
-		assertEquals(esperado1, respuesta1, 0);
-	}
-
-	@Test
-	public void testIngresarRetiro() {
-		boolean respuesta=con.ingresarRetiro(10);
-		assertTrue(respuesta);
-	}
-
-	@Test
-	public void testIngresarDeposito() {
-		Transaccion tra=new Transaccion();
-		double montovalor=30.2;
-	    tra.setMonto(20);
-	    double resultado=con.ingresarDeposito(tra);
-	    assertEquals(montovalor, resultado, 0);
-	}
-
-	@Test
-	public void testAgregarCuenta() {
-		Socio socio1 = new Socio();
-		
-		ArrayList esperado = new ArrayList();
-		esperado.add(credito);
-		ArrayList respuesta = con.agregarCuenta(credito);
-		String esperado1 = esperado.toString();
-		String respuesta1 = respuesta.toString();
-		assertEquals(esperado1, respuesta1, 0);
-	}
-
-	@Test
-	public void testTablaAmortizacion() {
-		fail("Not yet implemented");
-	}
-	@Test
-	public void testCalcularCuota() {
-		float esperado=350;
-		float respuesta=con.calcularCuota(2000,5, 6);
-		assertEquals(esperado, respuesta, 0);
 	}
 
 }
