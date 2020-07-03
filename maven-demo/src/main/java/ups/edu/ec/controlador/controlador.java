@@ -35,6 +35,7 @@ public class controlador {
 		listalibroDiario= new ArrayList<LibroDiario>();
 	}
 	/**
+	 * 
 	 * Metodos del modulo de contabilidad 
 	 */
 
